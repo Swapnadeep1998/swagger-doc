@@ -1,0 +1,790 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: WCMA-Stack
+  contact: {}
+host: dmgvwmi3ee.execute-api.ap-south-1.amazonaws.com
+basePath: /Prod
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /team/register:
+    post:
+      summary: 'Register a collection team'
+      tags:
+        - team
+      operationId: /team/register
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1team~1registerrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/team/filter/{team_status}':
+    get:
+      summary: 'Filter collection teams according to status Active or InActive'
+      tags:
+        - team
+      operationId: '/team/filter/:team_status'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: team_status
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/team/{team_id}':
+    get:
+      summary: 'Fetch details of a collection team'
+      tags:
+        - team
+      operationId: '/team/:team_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: team_id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /team/all:
+    get:
+      summary: 'Fetch all collection teams'
+      tags:
+        - team
+      operationId: /team/all
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/team/assign/{team_id}/{society_id}':
+    post:
+      summary: 'Assign a collection team to a particular society'
+      tags:
+        - team
+      operationId: '/team/assign/:team_id/:society_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: team_id
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: society_id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/team/del/{team_id}':
+    delete:
+      summary: 'Delete a collection team'
+      tags:
+        - team
+      operationId: '/team/del/:team_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: team_id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/team/add/member/{team_id}/{collector_id}':
+    put:
+      summary: 'Add a collector with his user_id to a collection team'
+      tags:
+        - team
+      operationId: '/team/add/member/:team_id/:collector_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: team_id
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: collector_id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/team/remove/member/{team_id}/{collector_id}':
+    put:
+      summary: 'Reamove a collector from a collection team'
+      tags:
+        - team
+      operationId: '/team/remove/member/:team_id/:collector_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: team_id
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: collector_id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /society/all:
+    get:
+      summary: 'Fetch details of all societies'
+      tags:
+        - society
+      operationId: /society/all
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/society/del/{society_id}':
+    delete:
+      summary: 'Remove a particular society'
+      tags:
+        - society
+      operationId: '/society/del/:society_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: society_id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/society/update/{society_id}':
+    put:
+      summary: 'Update a society details'
+      tags:
+        - society
+      operationId: '/society/update/:society_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: society_id
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1society~1update~1%3Asociety_id_request'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /society/register:
+    post:
+      summary: 'Register a new society'
+      tags:
+        - society
+      operationId: /society/register
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1society~1registerrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/society/{society_id}':
+    get:
+      summary: 'Fetch details of a particular society'
+      tags:
+        - society
+      operationId: '/society/:society_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: society_id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/feedback/send/{society_id}/{user_id}':
+    post:
+      summary: 'Submit a feedback as a resident of a particular society'
+      tags:
+        - feedback
+      operationId: '/feedback/send/:society_id/:user_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: society_id
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: user_id
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1feedback~1send~1%3Asociety_id~1%3Auser_id_request'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/feedback/filter/{attribute}/{attribute_value}':
+    get:
+      summary: 'Filter feedbacks according to Date/Society'
+      tags:
+        - feedback
+      operationId: '/feedback/filter/:attribute/:attribute_value'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: attribute
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: attribute_value
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/user/update/{user_id}':
+    put:
+      summary: 'Update the details of a registered user'
+      tags:
+        - user
+      operationId: '/user/update/:user_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1user~1update~1%3Auser_id_request'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/user/del/{user_id}':
+    delete:
+      summary: 'Delete a particular user'
+      tags:
+        - user
+      operationId: '/user/del/:user_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/all:
+    get:
+      summary: "Fetch all user details"
+      tags:
+        - user
+      operationId: /user/all
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/user/filter/{role}':
+    get:
+      summary: 'Filter users on the basis of role admin/collector/resident'
+      tags:
+        - user
+      operationId: '/user/filter/:role'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: role
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/login:
+    post:
+      summary: 'Login as a registered user'
+      tags:
+        - user
+      operationId: /user/login
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1user~1loginrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/register:
+    post:
+      summary: 'Register a user as admin/collector/resident'
+      tags:
+        - user
+      operationId: /user/register
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1user~1registerrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/user/:user_id':
+    get:
+      summary: 'Fetch details of a particular user'
+      tags:
+        - user
+      operationId: '/user/:user_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/vehicle/del/{vehicle_num}':
+    delete:
+      summary: 'Delete a registered vehicle'
+      tags:
+        - vehicle
+      operationId: '/vehicle/del/:vehicle_num'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: vehicle_num
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/vehicle/register/{vehicle_num}':
+    post:
+      summary: 'Register a new vehicle'
+      tags:
+        - vehicle
+      operationId: '/vehicle/register/:vehicle_num'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: vehicle_num
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1vehicle~1register~1%3Avehicle_num_request'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/vehicle/assign/{vehicle_num}/{team_id}':
+    post:
+      summary: 'Assign a registered vehicle to a collection team'
+      tags:
+        - vehicle
+      operationId: '/vehicle/assign/:vehicle_num/:team_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: vehicle_num
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: team_id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/vehicle/filter/status/{vehicle_status}':
+    get:
+      summary: 'Filter vehicles based on their status Active or InActive'
+      tags:
+        - vehicle
+      operationId: '/vehicle/filter/status/:vehicle_status'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: vehicle_status
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/collection/put/{team_id}/{society_id}':
+    post:
+      summary: 'Add collection details daily for a collection with respect to a society'
+      tags:
+        - collection
+      operationId: '/collection/put/:team_id/:society_id'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: team_id
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: society_id
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1collection~1put~1%3Ateam_id~1%3Asociety_id_request'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  '/collection/filter/{attribute}/{attribute_value}':
+    get:
+      summary: 'Filter all collection details with attributes as Collection Team/Society/Date and the corresponding attribute values'
+      tags:
+        - collection
+      operationId: '/collection/filter/:attribute/:attribute_value'
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: attribute
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: attribute_value
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  /team/registerrequest:
+    title: /team/registerrequest
+    example:
+      team_id: testTeam456
+      name: teamNameTest
+      members:
+        - collector_id1
+        - collector_id2
+        - collector_id3
+    type: object
+    properties:
+      team_id:
+        type: string
+      name:
+        type: string
+      members:
+        type: array
+        items:
+          type: string
+    required:
+      - team_id
+      - name
+      - members
+  '/society/update/:society_id_request':
+    title: '/society/update/:society_id_request'
+    example:
+      email: societymail@example.com
+      housing_units:
+        - '12345'
+        - '45313'
+      society_name: Society_Name_Test
+      chairman: Chairman_User_Id
+      secretary: Secretary_User_Id
+      address: test address(updated)
+    type: object
+    properties:
+      email:
+        type: string
+      housing_units:
+        type: array
+        items:
+          type: string
+      society_name:
+        type: string
+      chairman:
+        type: string
+      secretary:
+        type: string
+      address:
+        type: string
+    required:
+      - email
+      - housing_units
+      - society_name
+      - chairman
+      - secretary
+      - address
+  /society/registerrequest:
+    title: /society/registerrequest
+    example:
+      society_id: society1245
+      society_details:
+        email: societymail@example.com
+        housing_units:
+          - '12345'
+          - '45313'
+        society_name: Society_Name_Test
+        chairman: Chairman_User_Id
+        secretary: Secretary_User_Id
+        address: test society address
+    type: object
+    properties:
+      society_id:
+        type: string
+      society_details:
+        $ref: '#/definitions/~1society~1update~1%3Asociety_id_request'
+    required:
+      - society_id
+      - society_details
+  '/feedback/send/:society_id/:user_id_request':
+    title: '/feedback/send/:society_id/:user_id_request'
+    example:
+      feedback_type: test feedback
+      description: This is a test feedback
+    type: object
+    properties:
+      feedback_type:
+        type: string
+      description:
+        type: string
+    required:
+      - feedback_type
+      - description
+  '/user/update/:user_id_request':
+    title: '/user/update/:user_id_request'
+    example:
+      first_name: test_1st
+      last_name: test_last
+      email: test@example.com
+      phone: updatedPhone(1356645454)
+      society_id: society1245
+      housing_unit: '1245'
+      pin-code: '700225'
+    type: object
+    properties:
+      first_name:
+        type: string
+      last_name:
+        type: string
+      email:
+        type: string
+      phone:
+        type: string
+      society_id:
+        type: string
+      housing_unit:
+        type: string
+      pin-code:
+        type: string
+    required:
+      - first_name
+      - last_name
+      - email
+      - phone
+      - society_id
+      - housing_unit
+      - pin-code
+  /user/loginrequest:
+    title: /user/loginrequest
+    example:
+      user_id: testUserId
+    type: object
+    properties:
+      user_id:
+        type: string
+    required:
+      - user_id
+  /user/registerrequest:
+    title: /user/registerrequest
+    example:
+      user_id: testUserId
+      role: resident
+      user_details:
+        first_name: test_1st
+        last_name: test_last
+        email: test@example.com
+        phone: '98651331331'
+        society_id: society1245
+        housing_unit: '1245'
+        pin-code: '700225'
+    type: object
+    properties:
+      user_id:
+        type: string
+      role:
+        type: string
+      user_details:
+        $ref: '#/definitions/~1user~1update~1%3Auser_id_request'
+    required:
+      - user_id
+      - role
+      - user_details
+  '/vehicle/register/:vehicle_num_request':
+    title: '/vehicle/register/:vehicle_num_request'
+    example:
+      model: TATA ACE
+    type: object
+    properties:
+      model:
+        type: string
+    required:
+      - model
+  '/collection/put/:team_id/:society_id_request':
+    title: '/collection/put/:team_id/:society_id_request'
+    example:
+      weight: 16kgs
+    type: object
+    properties:
+      weight:
+        type: string
+    required:
+      - weight
+tags:
+  - name: team
+  - name: society
+  - name: feedback
+  - name: user
+  - name: vehicle
+  - name: collection
